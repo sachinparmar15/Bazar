@@ -1,0 +1,76 @@
+
+
+<div class="container mt-5">
+  <h1>Cart</h1>
+  <table class="table mt-5">
+    <thead class="bg-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+ 
+
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{item.product.name }}</td>
+        <td>
+          <img [src]="item.product.img"  height="55" class="card-img-top" alt="{{ item.product.name }} Image">
+        </td>
+
+        <td>₹{{ item.product.price | number : "1.2-2" }}</td>
+        <td>
+          <div class="d-flex align-items-center">
+            
+            <button class="bg-transparent" (click)="decreaseQuantity(item)">
+              <fa-icon
+                [icon]="caretDown"
+                [style.color]="'#faa'"
+                size="2x"
+              ></fa-icon>
+            </button>
+            <p class="mx-3">{{ item.quantity }}</p>
+            <button class="bg-transparent" (click)="increaseQuantity(item)">
+              <fa-icon
+                [icon]="caretUp"
+                [style.color]="'#afa'"
+                size="2x"
+              ></fa-icon>
+            </button>
+          </div>
+        </td>
+        <td>
+          <h4 class="text-success font-weight-bold">
+            Total: ₹{{ item.product.price*item.quantity | number : "1.2-2" }}
+          </h4>
+        </td>
+
+        <td>
+          <button (click)="removeFromCart(item)" class="btn btn-warning" >Remove</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <div >
+    <h4 class="text-success font-weight-bold end-0 ">
+      Total Amount to be Paid: ₹{{   getTotal() | number : "1.2-2" }}
+    </h4>
+
+    <div class="d-flex justify-content-between">
+      
+    <button class="btn btn-success end-0" *ngIf="cartItems" (click)="checkout()">Order Now</button>
+    <button class="btn btn-dark text-white end-0" routerLink="/order/{{userId}}" >Order Hisory</button>
+
+
+  </div>
+
+
+
+    
+  </div>
+</div>

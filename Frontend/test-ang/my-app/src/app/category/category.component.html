@@ -1,0 +1,121 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="filter-section">
+        <label for="customRange" class="form-label"><b>Price Range:</b> {{ filter.minValue }}/- to {{ filter.maxValue }}/-</label>
+        <input type="range" class="form-range bg-dark" [(ngModel)]="filter.minValue" max="{{ filter.maxValue }}" id="customRange" />
+        
+        
+        <div class="d-flex justify-content-between mt-3">
+           <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort By
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+              <li><a class="dropdown-item" href="#" (click)="setOrderBy('name')">Name (A to Z)</a></li>
+              <li><a class="dropdown-item" href="#" (click)="setOrderBy('namedesc')">Name (Z to A)</a></li>
+              <li><a class="dropdown-item" href="#" (click)="setOrderBy('price')">Price (Low to High)</a></li>
+              <li><a class="dropdown-item" href="#" (click)="setOrderBy('pricedesc')">Price (High to Low)</a></li>
+            </ul> -->
+            <select class="bg-dark text-white me-2 height:200px " [(ngModel)]="filter.orderBy" (change)="setOrderBy(filter.orderBy)">
+              <option value="name">Name(A to Z)</option>
+              <option value="namedesc">Name(Z to A)</option>
+              <option value="price">Price (Low to High)</option>
+              <option value="pricedesc"> Price (High to Low)</option>
+            </select>
+
+            <button (click)="getFilteredProduct()" class="btn btn-success">Filter Now</button>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let product of products">
+          <div class="card bg-dark text-white">
+            <img
+              [src]="product.img"
+              height="320"
+              class="card-img-top"
+              [routerLink]="['/Productpage', product.productid]"
+              alt="{{ product.name }} Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+    
+              <div class="d-flex justify-content-between">
+                <p class="card-text">Price: ₹{{ product.price }}</p>
+                <button (click)="addToCart(product)" class="btn btn-primary ms-5" routerLink="/cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div class="container mt-4">
+
+
+  <label for="customRange1" class="form-label"><b>Max Value: </b>{{ filter.maxValue }}/-</label>
+  <input type="range" max="99999"  class="form-range bg-dark" [(ngModel)]="filter.maxValue" id="customRange1" />
+
+  
+  <label for="customRange1" class="form-label"><b>Min Value: </b> {{ filter.minValue }}/-</label>
+  <input type="range" max={{filter.maxValue}} class="form-range bg-dark" [(ngModel)]="filter.minValue" id="customRange1" />
+  <div class="d-flex justify-content">
+    <h3><i> <b>Sort By: </b></i></h3>
+    <select class="bg-dark text-white mx-5 height:200px " [(ngModel)]="filter.orderBy">
+      <option value="name">Name(A to Z)</option>
+      <option value="namedesc">Name(Z to A)</option>
+      <option value="price">Price (Low to High)</option>
+      <option value="pricedesc"> Price (High to Low)</option>
+    </select>
+  </div>
+  <button (click)="getFilteredProduct()" class="btn btn-success d-block mx-auto ">Filter Now</button>
+</div>
+
+<hr >
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let product of products">
+      <div class="card bg-dark text-white">
+        <img
+          [src]="product.img"
+          height="320"
+          class="card-img-top"
+          [routerLink]="['/Productpage', product.productid]"
+          alt="{{ product.name }} Image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+
+          <div class="d-flex justify-content-between">
+            <p class="card-text">Price: ₹{{ product.price }}</p>
+            <button (click)="addToCart(product)" class="btn btn-primary ms-5" routerLink="/cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,79 @@
+
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h2>User Profile</h2>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!editMode">
+        <div class="mb-3"><strong>Name:</strong> {{ user?.name }}</div>
+        <div class="mb-3"><strong>Email:</strong> {{ user?.email }}</div>
+        <div class="mb-3"><strong>Phone:</strong> {{ user?.phone }}</div>
+        <div class="mb-3">
+          <strong>Address:</strong>
+          {{ user?.address.houseNo }}, {{ user?.address.area }},
+          {{ user?.address.landmark }}, {{ user?.address.village }},
+          {{ user?.address.city }}, {{ user?.address.state }} -
+          {{ user?.address.pincode }}
+        </div>
+        <button class="btn btn-primary" (click)="toggleEditMode()">Edit Profile</button>
+      </div>
+
+      <div *ngIf="editMode">
+        
+        <div class="mb-3">
+          <label for="name">Name:</label>
+          <input type="text" [(ngModel)]="user.name" name="name" class="form-control" />
+        </div>
+        
+
+        <div class="mb-3">
+          <label for="phone">Phone:</label>
+          <input type="text" [(ngModel)]="user.phone" name="phone" class="form-control" pattern="[0-9]{10}" title="Phone should be 10 digits" (blur)="validatePhone()" />
+        </div>
+        
+
+        <div class="mb-3">
+          <label for="houseNo">House No:</label>
+          <input type="text" [(ngModel)]="user.address.houseNo" name="houseNo" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="area">Area:</label>
+          <input type="text" [(ngModel)]="user.address.area" name="area" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="landmark">Landmark:</label>
+          <input type="text" [(ngModel)]="user.address.landmark" name="landmark" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="village">Village/City:</label>
+          <input type="text" [(ngModel)]="user.address.village" name="village" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="city">District:</label>
+          <input type="text" [(ngModel)]="user.address.city" name="city" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="state">State:</label>
+          <input type="text" [(ngModel)]="user.address.state" name="state" class="form-control" />
+        </div>
+      
+        <div class="mb-3">
+          <label for="pincode">Pincode:</label>
+          <input type="text" [(ngModel)]="user.address.pincode" name="pincode" class="form-control" pattern="[0-9]{6}" title="Pincode should be 6 digits" (blur)="validatePincode()" />
+        </div>
+        
+       
+
+        <div class="d-flex justify-content-center">
+        <button class="btn btn-secondary " (click)="toggleEditMode()">Cancel</button>
+        <button class="btn btn-success ms-2" (click)="updateProfile()">Save</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+

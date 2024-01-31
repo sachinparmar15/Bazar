@@ -1,0 +1,19 @@
+
+
+
+<div class="container mt-4" >
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let product of Product">
+        <div class="card bg-dark text-white">
+          <img [src]="product.img"  height="320" class="card-img-top" [routerLink]="['/Productpage', product.productid]" alt="{{ product.name }} Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+           
+            <p class="card-text">Price: ₹{{ product.price }}</p>
+            <button (click)="addToCart(product)" class="btn btn-primary ms-5" routerLink="/cart" >Add to Cart</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>

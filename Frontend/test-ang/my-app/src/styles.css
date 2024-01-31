@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 1;
+    background-color: bisque;
+    font-family: 'Times New Roman', Times, serif;
+    color:black;
+}
+
+.box{
+    box-shadow: #123456 0px 5px 15px;
+    padding: 15px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

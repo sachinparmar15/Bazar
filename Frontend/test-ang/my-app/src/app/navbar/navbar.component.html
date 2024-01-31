@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-2" href="">Bazar</a>
+    <img src="assets/2.png" height="25px" alt="Your Logo" class="logo me-5">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mr-2 pe-5">
+          <a class="nav-link active" aria-current="page" routerLink="/">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+
+        <li>
+          <form class="d-flex" role="search">
+            <input
+              #myInput
+              class="form-control me-3"
+              type="search"
+              placeholder="Search for Products and more"
+              aria-label="Search"
+              (keyup.enter)="doSearch(myInput.value)"
+            />
+            <button class="btn btn-outline-success" type="submit" (click)="doSearch(myInput.value)">
+              search
+            </button>
+          </form>
+        </li>
+      </ul>
+
+
+      <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+    
+
+          
+        <li *ngIf="this.isLoggedIn">
+          <a class="nav-link" *ngIf="this.isAdmin" routerLink="/allorder">
+            <i class="fas fa-clipboard-list"></i> All Orders</a>
+        </li>
+
+        <li>
+          <a class="nav-link"  *ngIf="this.isAdmin" routerLink="/addProduct">
+            <i class="fas fa-plus"></i> Add Product</a>
+        </li>
+        <li>
+          <a class="nav-link" *ngIf="this.isAdmin"  routerLink="/productlist">
+            <i class="fas fa-list"></i> Productlist</a>
+        </li>
+        <li *ngIf="!this.isLoggedIn">
+          <a class="nav-link" routerLink="/login">
+            <i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+        <li *ngIf="!this.isLoggedIn">
+          <a class="nav-link" routerLink="/signup">
+            <i class="fas fa-user-plus"></i> SignUp</a>
+        </li>
+        <li *ngIf="this.isLoggedIn && !isAdmin" class="nav-item me-3">
+          <a class="nav-link" routerLink="/cart">
+            <i class="fas fa-shopping-cart"></i> Cart</a>
+          
+        </li>
+
+        <li *ngIf="this.isLoggedIn && !isAdmin" class="nav-item me-3">
+          <a class="nav-link" routerLink="/order/{{userId}}">
+            <i class="fas fa-history"></i> Order History</a>
+        </li>
+
+
+        <li *ngIf="this.isLoggedIn" class="nav-item me-3">
+          <a class="nav-link" (click)="logout()"  routerLink="/login">
+            <i class="fas fa-sign-out-alt"></i> Logout</a>
+        </li>
+      
+        <li *ngIf="this.isLoggedIn">
+          <a class="nav-link" routerLink="/profile">
+            <i class="fas fa-user-circle"></i> Account</a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>

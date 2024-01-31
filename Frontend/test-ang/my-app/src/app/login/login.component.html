@@ -1,0 +1,23 @@
+
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="text-center">
+        <h2 class="mb-4 ">Login</h2>
+    </div>
+    <form >
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email" required
+            [(ngModel)]="user.email" name ="email">
+    
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" autocomplete="current-password" placeholder="Enter your password" required
+            [(ngModel)]="user.password" name ="password">
+        </div>
+        
+        <button  type="button" (click)="login()" class="btn btn-primary" >Login</button>
+        <!-- <button *ngIf="isLoggedIn" type="button" (click)="logout()" class="btn btn-danger" routerLink="/home">Logout</button> -->
+    </form>
+</div>
+

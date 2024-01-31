@@ -1,0 +1,51 @@
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="mb-4">Sign Up</h2>
+    
+    <form >
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required
+                [(ngModel)]="user.name" name ="name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required
+            [(ngModel)]="user.email" name ="email">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required
+            [(ngModel)]="user.phone" pattern="[0-9]{10}" name ="phone" (blur)="validatePhone()">
+        </div>
+        
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required
+            [(ngModel)]="user.password" name="password">
+        </div>
+        
+        <div class="mb-3" >
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="houseNo" placeholder="House No." required
+                 [(ngModel)]="user.houseNo" name="houseNo">
+           
+            <input type="text" class="form-control mt-2" id="area" placeholder="Area" required
+                [(ngModel)]="user.area" name="area">
+            <input type="text" class="form-control mt-2" id="landmark" placeholder="Landmark"
+                [(ngModel)]="user.landmark" name="landmark">
+            <input type="text" class="form-control mt-2" id="village" placeholder="Village/City" required
+                [(ngModel)]="user.village" name="village">
+            <input type="text" class="form-control mt-2" id="city" placeholder="District" required
+                [(ngModel)]="user.city" name="city">
+            <input type="text" class="form-control mt-2" id="state" placeholder="State" required
+                [(ngModel)]="user.state" name="state">
+            <input type="text" class="form-control mt-2" id="pincode" placeholder="Pincode" required
+                [(ngModel)]="user.pincode" pattern="[0-9]{6}" name="pincode" (blur)="validatePincode()">
+        </div>
+        
+        <button type="button" (click)="signup()" class="btn btn-primary mb-5" >Sign Up</button>
+    </form>
+</div>
+
+
